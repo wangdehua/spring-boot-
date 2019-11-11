@@ -1,0 +1,28 @@
+server:
+  port: 8101
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:8888/atsm_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+    username: root
+    password: bmac1234
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#多数据源
+backup:
+ muti-datasource:
+  url: jdbc:mysql://localhost:8888/sys?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+  username: root
+  password: bmac1234
+  driver-class-name: com.mysql.jdbc.Driver
+
+datasource:
+   muti-datasource-open: true #是否开启多数据源(true/false)
+   default-datasource-name: subBureau # 定义默认数据源名称
+#############################################################################################
+mybatis-plus:
+  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
+  mapper-locations: classpath:/com/example/demo1/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.example.demo1.model

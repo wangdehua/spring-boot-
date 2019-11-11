@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo1.mapper.TblBadCardMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo1.model.TblBadCard" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="card_chk_no" property="cardChkNo" jdbcType="VARCHAR" />
+    <result column="ht_flag" property="htFlag" jdbcType="VARCHAR" />
+    <result column="mer_chant_id" property="merchantId" jdbcType="VARCHAR" />
+    <result column="support_no" property="supportNo" jdbcType="VARCHAR" />
+    <result column="txn_type" property="txnType" jdbcType="VARCHAR" />
+    <result column="account_no" property="accountNo" jdbcType="VARCHAR" />
+    <result column="txn_cost_flag" property="txnCostFlag" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="seid" property="seid" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="order_date" property="orderDate" jdbcType="VARCHAR" />
+    <result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="update_time" property="updateTime" jdbcType="DATE" />
+    <result column="biz_status" property="bizStatus" jdbcType="INTEGER" />
+    <result column="refund_status" property="refundStatus" jdbcType="INTEGER" />
+    <result column="center_seq" property="centerSeq" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="amt" property="amt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, card_no, card_chk_no, ht_flag, mer_chant_id, support_no,txn_type, account_no , txn_cost_flag , unit_id , seid, order_no, order_date,
+    mobile_no,create_time, update_time, biz_status, refund_status, center_seq, remark, amt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bad_card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_bad_card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo1.model.TblBadCard" useGeneratedKeys="true" keyProperty="id"  >
+    insert into tbl_bad_card (id, card_no, card_chk_no, 
+      ht_flag, mer_chant_id, support_no,
+      txn_type, account_no , txn_cost_flag , unit_id  ,
+      seid, order_no, order_date, 
+      mobile_no,  create_time,
+      update_time,
+      biz_status, refund_status,
+      center_seq, remark,amt)
+    values (#{id,jdbcType=INTEGER}, #{cardNo,jdbcType=VARCHAR}, #{cardChkNo,jdbcType=VARCHAR}, 
+      #{htFlag,jdbcType=VARCHAR}, #{merChantId,jdbcType=VARCHAR}, #{supportNo,jdbcType=VARCHAR},
+      #{txnType,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR}, #{txnCostFlag,jdbcType=VARCHAR},#{unitId,jdbcType=VARCHAR},
+      #{seid,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, #{orderDate,jdbcType=VARCHAR},
+      #{mobileNo,jdbcType=VARCHAR},#{createTime,jdbcType=DATE},
+      #{updateTime,jdbcType=DATE},
+       #{bizStatus,jdbcType=INTEGER}, #{refundStatus,jdbcType=INTEGER},
+      #{centerSeq,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{amt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo1.model.TblBadCard" >
+    insert into tbl_bad_card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+      <if test="cardChkNo != null" >
+        card_chk_no,
+      </if>
+      <if test="htFlag != null" >
+        ht_flag,
+      </if>
+      <if test="merChantId != null" >
+        mer_chant_id,
+      </if>
+      <if test="supportNo != null" >
+        support_no,
+      </if>
+      <if test="txnType != null" >
+        txn_type,
+      </if>
+      <if test="accountNo != null" >
+        account_no,
+      </if>
+      <if test="txnCostFlag != null" >
+        txn_cost_flag,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="seid != null" >
+        seid,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="orderDate != null" >
+        order_date,
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no,
+      </if>
+      <if test="bizStatus != null" >
+        biz_status,
+      </if>
+      <if test="refundStatus != null" >
+        refund_status,
+      </if>
+      <if test="centerSeq != null" >
+        center_seq,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardChkNo != null" >
+        #{cardChkNo,jdbcType=VARCHAR},
+      </if>
+      <if test="htFlag != null" >
+        #{htFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="merChantId != null" >
+        #{merChantId,jdbcType=VARCHAR},
+      </if>
+      <if test="supportNo != null" >
+        #{supportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCostFlag != null" >
+        #{txnCostFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="seid != null" >
+        #{seid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizStatus != null" >
+        #{bizStatus,jdbcType=INTEGER},
+      </if>
+      <if test="refundStatus != null" >
+        #{refundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="centerSeq != null" >
+        #{centerSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo1.model.TblBadCard" >
+    update tbl_bad_card
+    <set >
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardChkNo != null" >
+        card_chk_no = #{cardChkNo,jdbcType=VARCHAR},
+      </if>
+      <if test="htFlag != null" >
+        ht_flag = #{htFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="merChantId != null" >
+        mer_chant_id = #{merChantId,jdbcType=VARCHAR},
+      </if>
+      <if test="supportNo != null" >
+        support_no = #{supportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        txn_type = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        account_no = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCostFlag != null" >
+        txn_cost_flag = #{txnCostFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="seid != null" >
+        seid = #{seid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        order_date = #{orderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizStatus != null" >
+        biz_status = #{bizStatus,jdbcType=INTEGER},
+      </if>
+      <if test="refundStatus != null" >
+        refund_status = #{refundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="centerSeq != null" >
+        center_seq = #{centerSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo1.model.TblBadCard" >
+    update tbl_bad_card
+    set card_no = #{cardNo,jdbcType=VARCHAR},
+      card_chk_no = #{cardChkNo,jdbcType=VARCHAR},
+      ht_flag = #{htFlag,jdbcType=VARCHAR},
+      mer_chant_id = #{merChantId,jdbcType=VARCHAR},
+      support_no = #{supportNo,jdbcType=VARCHAR},
+      tnx_type = #{txnType,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=VARCHAR},
+      txn_cost_flag = #{txnCostFlag,jdbcType=VARCHAR},
+      unit_id = #{unitId,jdbcType=VARCHAR},
+      seid = #{seid,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      order_date = #{orderDate,jdbcType=VARCHAR},
+      mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      biz_status = #{bizStatus,jdbcType=INTEGER},
+      refund_status = #{refundStatus,jdbcType=INTEGER},
+      center_seq = #{centerSeq,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      amt = #{amt}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateBadCardBizStatus" parameterType="map">
+      UPDATE tbl_bad_card SET biz_status = #{bizStatus},refund_status = #{refundStatus},update_time = #{updateTime} where order_no = #{orderNo}
+  </update>
+
+</mapper>
